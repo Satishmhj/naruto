@@ -1,7 +1,10 @@
 a {
-    text-decoration: none !important;
-    color: black !important;
-    padding: 5px;
-    padding-left: 22px;
+  text-decoration: none !important;
+  color: black !important;
+  padding: 5px;
+  padding-left: 22px;
+  font-family: 'Times New Roman', Times, serif;
 }
-
+nav.navbar.navbar-light {
+  background: slategrey;
+}
