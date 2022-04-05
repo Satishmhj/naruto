@@ -1,10 +1,13 @@
 import { Button } from "react-bootstrap";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Card, Col, Container, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { narutoApi } from "../Redux/Actions/NarutoApiAction";
+import { FaFilter } from "react-icons/fa";
+import FilterModal from "./FilterModal";
 
 const Series = () => {
+  const [show, setShow] = useState(false);
   const naruto = useSelector((state) => state.naruto.naruto);
 
   console.log(naruto);
@@ -15,15 +18,25 @@ const Series = () => {
   }, []);
   return (
     <>
+      {show && <FilterModal show={show} setShow={setShow} />}
       <Container>
-        <div className="display-6 d-flex justify-content-center p-3 text-black">
+        <div className="display-6  p-3 text-black">
           Series
+          <Button
+            classname="d-flex flex-row-reverse"
+            style={{ float: "right" }}
+            onClick={() => {
+              setShow(true);
+            }}
+          >
+            <FaFilter /> Filter
+          </Button>
         </div>
         <Row>
           {naruto.results?.map((items) => {
             return (
               <>
-                <Col>
+                <Col style={{ padding: "5px" }}>
                   <Card style={{ width: "18rem" }}>
                     <Card.Img variant="top" src={`${items.image_url}`} />
                     <Card.Body>
