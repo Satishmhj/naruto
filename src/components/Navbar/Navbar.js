@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
+import CartModal from "./CartModal/CartModal";
 import "./navbar.css";
 
 const Navbar = () => {
+  const [show, setShow] = useState(false);
   return (
     <div>
+      {show && <CartModal show={show} setShow={setShow} />}
       <nav class="navbar navbar-light ">
         <div className="container">
           <a href="">
@@ -34,7 +37,9 @@ const Navbar = () => {
               </svg>{" "}
               Series
             </a>
-            <a href="">
+            <a href="#" onClick={() => {
+              setShow(true)
+            }}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
