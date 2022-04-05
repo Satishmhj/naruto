@@ -1,9 +1,12 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router";
 import CartModal from "./CartModal/CartModal";
 import "./navbar.css";
 
 const Navbar = () => {
   const [show, setShow] = useState(false);
+
+  let navigate = useNavigate();
   return (
     <div>
       {show && <CartModal show={show} setShow={setShow} />}
@@ -18,11 +21,22 @@ const Navbar = () => {
               className="d-inline-block align-top"
               alt=""
             />
-            <b className="px-2">NarutoWeb</b>
+            <b
+              className="px-2"
+              onClick={() => {
+                navigate("/");
+              }}
+            >
+              NarutoWeb
+            </b>
           </a>
           <div className="anchorLeft">
-            <a href="">
-              {" "}
+            <a
+              href="#"
+              onClick={() => {
+                navigate("/series");
+              }}
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
@@ -37,9 +51,12 @@ const Navbar = () => {
               </svg>{" "}
               Series
             </a>
-            <a href="#" onClick={() => {
-              setShow(true)
-            }}>
+            <a
+              href="#"
+              onClick={() => {
+                setShow(true);
+              }}
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
